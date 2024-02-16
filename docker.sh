@@ -19,3 +19,7 @@ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.
 sudo apt-get update -y
 sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
+
+FILE_PATH="/etc/containerd/config.toml"
+
+sudo sed -i '/disabled_plugins = \["cri"\]/s/^/#/' "$FILE_PATH"
